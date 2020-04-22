@@ -21,3 +21,4 @@ appData.expenses[answer11] = answer12;
 appData.expenses[answer21] = answer22;
 
 alert(appData.budget / 30);
+alert("End of file");
