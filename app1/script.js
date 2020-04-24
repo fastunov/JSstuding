@@ -12,13 +12,12 @@ let appData = {
     savings : false
 };
 
-let answer11 = prompt("Введите обязательную статью расходов в этом месяце"),
-    answer12 = prompt("Во сколько обойдется?"),
-    answer21 = prompt("Введите обязательную статью расходов в этом месяце"),
-    answer22 = prompt("Во сколько обойдется?");
-
-appData.expenses[answer11] = answer12;
-appData.expenses[answer21] = answer22;
+for (let i=0; i < 2; i++) {
+    let answerItem = prompt("Введите обязательную статью расходов в этом месяце"),
+        answerExpenses= prompt("Во сколько обойдется?");
+    
+    appData.expenses[answerItem] = answerExpenses;
+}
 
 alert(appData.budget / 30);
 alert("End of file");
