@@ -20,4 +20,3 @@ for (let i=0; i < 2; i++) {
 }
 
 alert(appData.budget / 30);
-alert("End of file");
