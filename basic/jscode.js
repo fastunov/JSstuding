@@ -1,43 +1,47 @@
-// // const heading = document.getElementById('heading')
+console.log('Request data')
 
-// // console.dir(heading)
+// setTimeout( () => {
+//   console.log('Processing data...')
 
-// // function hello() {
-// // 	console.log('Hello!', this)
-// // }
+//   const backendData = {
+//     server: 'test',
+//     port: 2000,
+//     status: 'working'
+//   }
 
+//   setTimeout( () => {
+//     backendData.modified = true
+//     console.log('Data recieved', backendData)
+//   }, 2000)
 
-// // const person = {
-// // 	name: 'Serg',
-// // 	age: 48,
-// // 	sayhello: hello
-// // }
+// }, 2000)
 
-// // function createCalcFunction(n) {
-// // 	return function() {
-// // 		console.log(1000 * n)
-// // 	}
-// // }
+const p = new Promise((resolve, reject) => {
+  setTimeout(() => {
+    console.log('Processing data...')
+    const backendData = {
+      server: 'test',
+      port: 2000,
+      status: 'working'
+    }
+    resolve(backendData)
+  }, 2000)
+})
 
-// // const calc = createCalcFunction(34)
-// // calc()
-
-// // function simpleInc (n) {
-// // 	return function (num) {;
-// // 		return num + n;
-// // 	};
-// // };
-
-// // const addfive = simpleInc ();
-
-// function bind(){
-// 	return 
-// }
-
-// console.log('Test')
-
-function bind(context, fn) {
-	return function (..args) {
-		fn.apply(context, args)
-	}
-}
+p.then(data => {
+  return new Promise((resolve,reject) => {
+    setTimeout(() => {
+      data.modified = true
+      resolve (data)
+    },2000)
+  })
+})
+.then(clientData => {
+  clientData.fromPromise = true
+  return clientData
+})
+.then(data => {
+  console.log('Data received', data)
+})
+.catch(err => console.error('Error: ', err))
+.finally(() => console.log('All finished!'))
